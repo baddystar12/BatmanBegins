@@ -17,15 +17,17 @@ function setup(){
     world = engine.world;
     umbrella1 = new Umbrella(300,300);
     drops = new Drops(30,30,30);
+    for(var i = 0; i<maxDrops; i++){
+        drops.push(new createDrop(random(0,400), random(0,400)));
+    }
 }
 
 function draw(){
     background("white");
     Engine.update(engine);
     for(var i = 0; i<maxDrops; i++){
-        drops.push(new createDrop(random(0,400), random(0,400)));
+        drops[i].display();
     }
-    drops.display();
     if (frameCount % 20 === 0) {
         thunderbolt = createSprite(random(100, 1000), 0, 100, 100);
         var rand = Math.round(random(1,5));
